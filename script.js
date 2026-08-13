@@ -1,142 +1,278 @@
+const body = document.body;
+const themeToggle = document.getElementById("themeToggle");
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("nav");
+const heroTagline = document.getElementById("heroTagline");
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+const currentYear = document.getElementById("currentYear");
 
-const themeToggle = document.getElementById('themeToggle');
-const html = document.documentElement;
+const recipientEmail = "addysam@yahoo.com";
 
-const savedTheme = localStorage.getItem('theme');
-const systemPrefersDark = globalThis.matchMedia('(prefers-color-scheme: dark)').matches;
+const taglineText =
+  "I build responsive, accessible, and user-friendly web experiences with HTML, CSS, JavaScript, React, Next.js, and Tailwind CSS.";
 
-if (savedTheme) {
-  html.dataset.theme = savedTheme;
-  themeToggle.textContent = savedTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
-} else if (systemPrefersDark) {
-  html.dataset.theme = 'dark';
-  themeToggle.textContent = '☀️ Light';
-} else {
+let taglineIndex = 0;
 
-  html.dataset.theme = 'light';
-  themeToggle.textContent = '🌙 Dark';
+function typeTagline() {
+  if (!heroTagline) return;
+
+  heroTagline.textContent = taglineText.slice(0, taglineIndex);
+  taglineIndex += 1;
+
+  if (taglineIndex <= taglineText.length) {
+    window.setTimeout(typeTagline, 28);
+  }
 }
 
-themeToggle.addEventListener('click', () => {
-  const currentTheme = html.dataset.theme;
-  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+function updateThemeButton() {
+  if (!themeToggle) return;
 
-  html.dataset.theme = newTheme;
-  localStorage.setItem('theme', newTheme);
-  themeToggle.textContent = newTheme === 'dark' ? '☀️ Light' : '🌙 Dark';
-  
-  themeToggle.setAttribute('aria-pressed', newTheme === 'dark' ? 'true' : 'false');
-});
+  const isDark = body.classList.contains("dark-theme");
 
+  themeToggle.textContent = isDark ? "☀️ Light" : "🌙 Dark";
 
-const hamburger = document.getElementById('hamburger');
-const nav = document.getElementById('nav');
+  themeToggle.setAttribute(
+    "aria-label",
+    isDark ? "Switch to light mode" : "Switch to dark mode"
+  );
+}
 
-hamburger.addEventListener('click', () => {
-  nav.classList.toggle('active');
-});
+function loadSavedTheme() {
+  const savedTheme = localStorage.getItem("portfolio-theme");
 
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('active');
-  });
-});
-
-
-const heroTagline = document.getElementById('heroTagline');
-const heroPhrases = [
-  'Building responsive, accessible websites one small project at a time.',
-  'Learning JavaScript and React while improving my design instincts.',
-  'Enjoying clean code, thoughtful UI, and beginner-friendly progress.'
-];
-
-let phraseIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typeHeroText() {
-  const currentPhrase = heroPhrases[phraseIndex];
-
-  if (deleting) {
-    heroTagline.textContent = currentPhrase.slice(0, charIndex - 1);
-    charIndex -= 1;
-
-    if (charIndex === 0) {
-      deleting = false;
-      phraseIndex = (phraseIndex + 1) % heroPhrases.length;
-    }
-  } else {
-    heroTagline.textContent = currentPhrase.slice(0, charIndex + 1);
-    charIndex += 1;
-
-    if (charIndex === currentPhrase.length) {
-      deleting = true;
-      setTimeout(typeHeroText, 1600);
-      return;
-    }
+  if (savedTheme === "dark") {
+    body.classList.add("dark-theme");
   }
 
-  setTimeout(typeHeroText, deleting ? 40 : 60);
+  updateThemeButton();
 }
 
-typeHeroText();
+function toggleTheme() {
+  body.classList.toggle("dark-theme");
 
+  const selectedTheme = body.classList.contains("dark-theme")
+    ? "dark"
+    : "light";
 
-const revealElements = document.querySelectorAll('.reveal');
+  localStorage.setItem("portfolio-theme", selectedTheme);
+  updateThemeButton();
+}
 
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, {
-  threshold: 0.15
-});
+function toggleMobileMenu() {
+  if (!nav || !hamburger) return;
 
-revealElements.forEach((element) => revealObserver.observe(element));
+  const isOpen = nav.classList.toggle("open");
 
+  body.classList.toggle("menu-open", isOpen);
 
-document.querySelectorAll('.progress-fill').forEach((bar) => {
-  bar.style.width = `${bar.dataset.progress}%`;
-});
+  hamburger.setAttribute("aria-expanded", String(isOpen));
 
+  hamburger.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu"
+  );
 
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+  hamburger.textContent = isOpen ? "×" : "☰";
+}
 
-filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach((btn) => btn.classList.remove('active'));
-    button.classList.add('active');
+function closeMobileMenu() {
+  if (!nav || !hamburger) return;
 
-    const filter = button.dataset.filter;
+  nav.classList.remove("open");
+  body.classList.remove("menu-open");
 
-    projectCards.forEach((card) => {
-      const matches = filter === 'all' || card.dataset.category === filter;
-      card.style.display = matches ? 'block' : 'none';
+  hamburger.setAttribute("aria-expanded", "false");
+  hamburger.setAttribute("aria-label", "Open navigation menu");
+  hamburger.textContent = "☰";
+}
+
+function setupProjectFilters() {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedFilter = button.dataset.filter;
+
+      filterButtons.forEach((filterButton) => {
+        filterButton.classList.remove("active");
+      });
+
+      button.classList.add("active");
+
+      projectCards.forEach((card) => {
+        const cardCategory = card.dataset.category;
+
+        const shouldShow =
+          selectedFilter === "all" ||
+          selectedFilter === cardCategory;
+
+        card.classList.toggle("is-hidden", !shouldShow);
+      });
     });
   });
-});
+}
 
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
+function setupRevealAnimation() {
+  const revealElements = document.querySelectorAll(".reveal");
 
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
+  if (!("IntersectionObserver" in window)) {
+    revealElements.forEach((element) => {
+      element.classList.add("visible");
+    });
 
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const message = document.getElementById('message').value.trim();
-
-  if (!name || !email || !message) {
-    formStatus.textContent = 'Please complete all fields before sending your message.';
-    formStatus.className = 'form-status error';
     return;
   }
 
-  formStatus.textContent = `Thanks ${name}! Your message is ready to send.`;
-  formStatus.className = 'form-status success';
-  contactForm.reset();
+  const observer = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("visible");
+        currentObserver.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.12,
+    }
+  );
+
+  revealElements.forEach((element) => {
+    observer.observe(element);
+  });
+}
+
+function setupProgressBars() {
+  const progressBars = document.querySelectorAll(".progress-fill");
+
+  if (!("IntersectionObserver" in window)) {
+    progressBars.forEach((bar) => {
+      bar.style.width = `${bar.dataset.progress}%`;
+    });
+
+    return;
+  }
+
+  const progressObserver = new IntersectionObserver(
+    (entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const progressBar = entry.target;
+
+        progressBar.style.width = `${progressBar.dataset.progress}%`;
+
+        currentObserver.unobserve(progressBar);
+      });
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  progressBars.forEach((bar) => {
+    progressObserver.observe(bar);
+  });
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function showFormStatus(message, type) {
+  if (!formStatus) return;
+
+  formStatus.textContent = message;
+  formStatus.className = `form-status ${type}`;
+}
+
+function createMailtoUrl(name, email, message) {
+  const subject = `Portfolio contact from ${name}`;
+
+  const emailBody = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    "",
+    "Message:",
+    message,
+    "",
+    "---",
+    "Sent from Adeniyi Ayomide's portfolio website",
+  ].join("\n");
+
+  return (
+    `mailto:${recipientEmail}` +
+    `?subject=${encodeURIComponent(subject)}` +
+    `&body=${encodeURIComponent(emailBody)}`
+  );
+}
+
+function setupContactForm() {
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      showFormStatus(
+        "Please complete your name, email, and message.",
+        "error"
+      );
+
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      showFormStatus(
+        "Please enter a valid email address.",
+        "error"
+      );
+
+      return;
+    }
+
+    const mailtoUrl = createMailtoUrl(name, email, message);
+
+    showFormStatus(
+      "Opening your email application. Click Send to deliver your message.",
+      "success"
+    );
+
+    window.location.href = mailtoUrl;
+  });
+}
+
+function updateCurrentYear() {
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
+  }
+}
+
+themeToggle?.addEventListener("click", toggleTheme);
+hamburger?.addEventListener("click", toggleMobileMenu);
+
+document.querySelectorAll(".site-nav a").forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
 });
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) {
+    closeMobileMenu();
+  }
+});
+
+loadSavedTheme();
+typeTagline();
+setupProjectFilters();
+setupRevealAnimation();
+setupProgressBars();
+setupContactForm();
+updateCurrentYear();

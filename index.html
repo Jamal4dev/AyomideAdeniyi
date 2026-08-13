@@ -3,53 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adeniyi Ayomide | Portfolio</title>
+
+  <meta
+    name="description"
+    content="Adeniyi Ayomide is a frontend developer building responsive, accessible, and user-friendly websites with HTML, CSS, JavaScript, React, Next.js, and Tailwind CSS."
+  >
+
+  <meta name="author" content="Adeniyi Ayomide">
+
+  <title>Adeniyi Ayomide | Frontend Developer</title>
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header>
-    <div class="logo">Adeniyi Ayomide</div>
-    <nav id="nav">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
-    </nav>
-    <button class="hamburger" id="hamburger">☰</button>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Adeniyi Ayomide</a>
+
+      <nav id="nav" class="site-nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#tools">Tools</a>
+        <a href="#contact">Contact</a>
+
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          type="button"
+          aria-label="Switch to dark mode"
+        >
+          🌙 Dark
+        </button>
+      </nav>
+
+      <button
+        class="hamburger"
+        id="hamburger"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="nav"
+      >
+        ☰
+      </button>
+    </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <img src="images/profile.jpeg" alt="Adeniyi Ayomide">
-      <p class="eyebrow">Frontend developer in training</p>
-      <h1>Hi, I'm Adeniyi Ayomide</h1>
-      <p id="heroTagline" class="hero-copy"></p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn">View Work</a>
-        <a href="#contact" class="btn btn-outline">Contact Me</a>
-      </div>
-      <div class="hero-highlights">
-        <div class="highlight-card">
-          <span>Current focus</span>
-          <strong>Responsive layouts & accessibility</strong>
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-content">
+        <img
+          src="images/profile.jpeg"
+          alt="Portrait of Adeniyi Ayomide"
+          class="profile-image"
+        >
+
+        <p class="eyebrow">Frontend developer in training</p>
+
+        <h1>Hi, I'm Adeniyi Ayomide</h1>
+
+        <p id="heroTagline" class="hero-copy">
+          I build responsive, accessible, and user-friendly web experiences.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn">View Work</a>
+          <a href="#contact" class="btn btn-outline">Contact Me</a>
         </div>
-        <div class="highlight-card">
-          <span>Learning</span>
-          <strong>JavaScript and React basics</strong>
+
+        <div class="hero-highlights">
+          <div class="highlight-card">
+            <span>Current focus</span>
+            <strong>Responsive layouts & accessibility</strong>
+          </div>
+
+          <div class="highlight-card">
+            <span>Learning</span>
+            <strong>JavaScript, React, Next.js & Tailwind CSS</strong>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="reveal">
+    <section id="about" class="container reveal">
       <h2>About Me</h2>
+
       <div class="card about-grid">
         <div>
-          <p>I'm a self-taught developer focused on creating simple, user-friendly web experiences. I enjoy working with HTML, CSS, and JavaScript, and I'm currently learning React.</p>
-          <p>When I'm not coding, you'll find me reading or volunteering at Central Mosque Ebutte-Igbogbo, Ikorodu.</p>
+          <p>
+            I'm a self-taught developer focused on creating simple,
+            user-friendly web experiences. I enjoy working with HTML, CSS,
+            and JavaScript, and I'm currently learning React, Next.js,
+            TypeScript, and Tailwind CSS.
+          </p>
+
+          <p>
+            When I'm not coding, you'll find me reading or playing chess.
+          </p>
         </div>
+
         <div class="about-side">
           <p class="about-note">What I bring to a team:</p>
+
           <ul>
             <li>Clear, clean layout structure</li>
             <li>Mobile-friendly design</li>
@@ -60,47 +117,143 @@
       </div>
     </section>
 
-    <section id="projects" class="reveal">
+    <section id="projects" class="container reveal">
       <h2>Projects</h2>
-      <p class="section-copy">I’m building a small but growing portfolio. Use the filters to explore the kind of work I’m learning and improving.</p>
-      <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="website">Websites</button>
-        <button class="filter-btn" data-filter="tool">Tools</button>
-        <button class="filter-btn" data-filter="learning">Learning</button>
+
+      <p class="section-copy">
+        I’m building a small but growing portfolio. Use the filters to explore
+        the kind of work I’m learning and improving.
+      </p>
+
+      <div class="project-filters" aria-label="Project filters">
+        <button
+          class="filter-btn active"
+          type="button"
+          data-filter="all"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-btn"
+          type="button"
+          data-filter="website"
+        >
+          Websites
+        </button>
+
+        <button
+          class="filter-btn"
+          type="button"
+          data-filter="tool"
+        >
+          Tools
+        </button>
+
+        <button
+          class="filter-btn"
+          type="button"
+          data-filter="learning"
+        >
+          Learning
+        </button>
       </div>
+
       <div class="grid project-grid">
         <article class="card project-card" data-category="website">
           <p class="project-tag">Website</p>
+
           <h3>Mosque Website</h3>
-          <p>A responsive site for Central Mosque Ebutte-Igbogbo, Ikorodu with prayer times and event announcements.</p>
-          <a href="https://ridwanullahikorodu.netlify.app/">View Project →</a>
+
+          <p>
+            A responsive site for Central Mosque Ebutte-Igbogbo, Ikorodu,
+            with prayer times and event announcements.
+          </p>
+
+          <a
+            href="https://ridwanullahikorodu.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project →
+          </a>
         </article>
+
         <article class="card project-card" data-category="tool">
           <p class="project-tag">Tool</p>
+
           <h3>Password Generator</h3>
-          <p>A random password generator with options and convenient copy-and-share functionality.Fully responsive and accessible.</p>
-          <a href="https://projectkeygen.netlify.app/">View Project →</a>
+
+          <p>
+            A random password generator with custom options and convenient
+            copy functionality. Fully responsive and accessible.
+          </p>
+
+          <a
+            href="https://projectkeygen.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project →
+          </a>
         </article>
+
         <article class="card project-card" data-category="learning">
           <p class="project-tag">Learning</p>
+
           <h3>Daily Quran & Prayer Dashboard</h3>
-          <p>A single-page dashboard for islamic reminder.</p>
-          <a href="https://salahquranplanner.netlify.app/">View Project →</a>
+
+          <p>
+            A single-page dashboard for Islamic reminders, prayer planning,
+            and Quran-related activities.
+          </p>
+
+          <a
+            href="https://salahquranplanner.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project →
+          </a>
+        </article>
+
+        <article class="card project-card" data-category="learning">
+          <p class="project-tag">Learning</p>
+
+          <h3>Business Analytics Dashboard</h3>
+
+          <p>
+            A responsive analytics dashboard that organises key metrics,
+            charts, filters, and tables into an accessible interface.
+          </p>
+
+          <a
+            href="https://business-analyticsdashboard.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Project →
+          </a>
         </article>
       </div>
     </section>
 
-    <section id="skills" class="reveal">
+    <section id="skills" class="container reveal">
       <h2>Skills</h2>
+
       <div class="card">
         <div class="skills">
           <span class="skill">HTML5</span>
           <span class="skill">CSS3</span>
           <span class="skill">JavaScript</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">React</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">Tailwind CSS</span>
           <span class="skill">Git & GitHub</span>
           <span class="skill">Responsive Design</span>
           <span class="skill">Accessibility</span>
+          <span class="skill">Component-based architecture</span>
         </div>
 
         <div class="skill-progress-list">
@@ -109,67 +262,259 @@
               <strong>HTML</strong>
               <span>90%</span>
             </div>
-            <div class="progress-track"><span class="progress-fill" data-progress="90"></span></div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="90"></span>
+            </div>
           </div>
+
           <div class="progress-row">
             <div class="progress-labels">
               <strong>CSS</strong>
               <span>84%</span>
             </div>
-            <div class="progress-track"><span class="progress-fill" data-progress="84"></span></div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="84"></span>
+            </div>
           </div>
+
           <div class="progress-row">
             <div class="progress-labels">
               <strong>JavaScript</strong>
               <span>70%</span>
             </div>
-            <div class="progress-track"><span class="progress-fill" data-progress="70"></span></div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="70"></span>
+            </div>
           </div>
+
           <div class="progress-row">
             <div class="progress-labels">
               <strong>React</strong>
               <span>45%</span>
             </div>
-            <div class="progress-track"><span class="progress-fill" data-progress="45"></span></div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="45"></span>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-labels">
+              <strong>Tailwind CSS</strong>
+              <span>40%</span>
+            </div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="40"></span>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-labels">
+              <strong>Next.js</strong>
+              <span>40%</span>
+            </div>
+
+            <div class="progress-track">
+              <span class="progress-fill" data-progress="40"></span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="reveal">
+    <section id="tools" class="container reveal">
+      <h2>Tools</h2>
+
+      <p class="section-copy">
+        Tools I use while building, testing, debugging, and managing frontend projects.
+      </p>
+
+      <div class="card">
+        <div class="tools-grid">
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">⌘</span>
+
+            <div>
+              <h3>VS Code</h3>
+              <p>
+                My primary code editor for writing and organising projects.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">›_</span>
+
+            <div>
+              <h3>Git Bash</h3>
+              <p>
+                Used for terminal commands, Git workflows, and project navigation.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">⚡</span>
+
+            <div>
+              <h3>Vite</h3>
+              <p>
+                Used to create and run fast modern frontend development projects.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">npm</span>
+
+            <div>
+              <h3>npm</h3>
+              <p>
+                Used to install packages, run scripts, and manage dependencies.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">↔</span>
+
+            <div>
+              <h3>Postman</h3>
+              <p>
+                Used for sending requests and learning how APIs work.
+              </p>
+            </div>
+          </div>
+
+          <div class="tool-item">
+            <span class="tool-icon" aria-hidden="true">⌕</span>
+
+            <div>
+              <h3>Chrome DevTools</h3>
+              <p>
+                Used for debugging, testing responsiveness, and inspecting webpages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container reveal">
       <h2>Contact</h2>
+
       <div class="contact-layout">
         <div class="card contact-details">
           <p>Have a project in mind? Let's talk.</p>
-          <p><strong>Email:</strong> <a href="mailto:addysam@yahoo.com">addysam@yahoo.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/Jamal4dev" target="_blank" rel="noopener noreferrer">github.com/Jamal4dev</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ayomide-adeniyi-91746130a" target="_blank" rel="noopener noreferrer">linkedin.com/in/ayomide-adeniyi</a></p>
-          <p class="contact-note">You can also send a quick message below and I’ll follow up.</p>
+
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:addysam@yahoo.com">addysam@yahoo.com</a>
+          </p>
+
+          <p>
+            <strong>GitHub:</strong>
+            <a
+              href="https://github.com/Jamal4dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              github.com/Jamal4dev
+            </a>
+          </p>
+
+          <p>
+            <strong>LinkedIn:</strong>
+            <a
+              href="https://www.linkedin.com/in/ayomide-adeniyi-91746130a"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              linkedin.com/in/ayomide-adeniyi
+            </a>
+          </p>
+
+          <p class="contact-note">
+            You can also send a quick message using the form. Your email
+            application will open with the message prepared for sending.
+          </p>
         </div>
 
-        <form id="contactForm" class="card contact-form" novalidate>
-          <label>
+        <form
+          id="contactForm"
+          class="card contact-form"
+          action="mailto:addysam@yahoo.com"
+          method="post"
+          enctype="text/plain"
+          novalidate
+        >
+          <label for="name">
             Name
-            <input type="text" id="name" name="name" required placeholder="Your name">
+
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your name"
+              autocomplete="name"
+            >
           </label>
-          <label>
+
+          <label for="email">
             Email
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              autocomplete="email"
+            >
           </label>
-          <label>
+
+          <label for="message">
             Message
-            <textarea id="message" name="message" rows="5" required placeholder="Tell me about your idea"></textarea>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              required
+              placeholder="Tell me about your idea"
+            ></textarea>
           </label>
-          <button type="submit" class="btn">Send Message</button>
-          <p id="formStatus" class="form-status" aria-live="polite"></p>
+
+          <button type="submit" class="btn">
+            Open Email App
+          </button>
+
+          <p
+            id="formStatus"
+            class="form-status"
+            aria-live="polite"
+          ></p>
+
+          <p class="form-helper">
+            Your email application will open with your message prepared for sending.
+          </p>
         </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 Adeniyi Ayomide. Built with HTML, CSS, and JavaScript.</p>
+    <p>
+      © <span id="currentYear">2026</span> Adeniyi Ayomide.
+      Built with HTML, CSS, and JavaScript.
+    </p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
