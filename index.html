@@ -3,69 +3,122 @@
 <head>
   <meta charset="utf-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  >
 
   <meta
     name="description"
-    content="Adeniyi Ayomide — Frontend Developer building responsive, accessible and polished web experiences with HTML, CSS, JavaScript and modern frontend tools."
+    content="Adeniyi Ayomide is a frontend developer building responsive, accessible and thoughtful digital experiences with HTML, CSS, JavaScript and modern frontend tools."
   >
 
   <meta name="author" content="Adeniyi Ayomide">
-  <meta name="robots" content="index, follow">
-  <meta name="theme-color" content="#09090b">
+  <meta name="robots" content="index,follow">
 
-  <meta property="og:title" content="Adeniyi Ayomide — Frontend Developer">
+  <meta name="theme-color" content="#08090d">
+  <meta name="color-scheme" content="dark light">
+
+  <link
+    rel="canonical"
+    href="https://ayomide1adeniyi.netlify.app/"
+  >
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta
+    property="og:title"
+    content="Adeniyi Ayomide — Frontend Developer"
+  >
   <meta
     property="og:description"
-    content="Frontend developer building responsive, accessible and user-friendly web experiences."
+    content="Responsive interfaces, thoughtful interactions and clean frontend engineering."
   >
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://ayomide1adeniyi.netlify.app/">
+  <meta
+    property="og:url"
+    content="https://ayomide1adeniyi.netlify.app/"
+  >
+  <meta property="og:image" content="images/profile.jpeg">
 
-  <link rel="canonical" href="https://ayomide1adeniyi.netlify.app/">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta
+    name="twitter:title"
+    content="Adeniyi Ayomide — Frontend Developer"
+  >
+  <meta
+    name="twitter:description"
+    content="Responsive interfaces, thoughtful interactions and clean frontend engineering."
+  >
 
+  <title>Adeniyi Ayomide — Frontend Developer</title>
+
+  <!-- Prevent theme flash -->
+  <script>
+    (() => {
+      try {
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+
+        document.documentElement.dataset.theme =
+          saved || (prefersDark ? "dark" : "light");
+      } catch {
+        document.documentElement.dataset.theme = "dark";
+      }
+    })();
+  </script>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    rel="preconnect"
+    href="https://api.fontshare.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="styles.css">
-
-  <title>Adeniyi Ayomide | Frontend Developer</title>
-
-  <script>
-    (() => {
-      const savedTheme = localStorage.getItem("theme");
-      const systemPrefersDark =
-        window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      document.documentElement.dataset.theme =
-        savedTheme || (systemPrefersDark ? "dark" : "light");
-    })();
-  </script>
 </head>
 
 <body>
 
+  <!-- Skip navigation -->
   <a class="skip-link" href="#main">
     Skip to content
   </a>
 
+  <!-- Background atmosphere -->
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
+  <!-- Custom cursor -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true"></div>
 
   <!-- =========================
        HEADER
   ========================== -->
-
   <header class="site-header" id="header">
 
-    <div class="container nav-wrap">
+    <div class="container nav-shell">
 
       <a
         class="brand magnetic"
@@ -75,7 +128,7 @@
         <span class="brand-mark">AA</span>
 
         <span>
-          Adeniyi<span class="brand-dot">.</span>
+          Adeniyi<span class="accent-dot">.</span>
         </span>
       </a>
 
@@ -83,10 +136,11 @@
         class="menu-toggle"
         id="menuToggle"
         type="button"
-        aria-controls="siteNav"
         aria-expanded="false"
-        aria-label="Open navigation"
+        aria-controls="siteNav"
+        aria-label="Open menu"
       >
+        <span></span>
         <span></span>
         <span></span>
       </button>
@@ -96,6 +150,7 @@
         id="siteNav"
         aria-label="Primary navigation"
       >
+
         <a class="nav-link active" href="#about">
           About
         </a>
@@ -113,14 +168,15 @@
         </a>
 
         <button
-          class="theme-toggle"
+          class="theme-toggle magnetic"
           id="themeToggle"
           type="button"
-          aria-label="Toggle color theme"
+          aria-label="Switch to light mode"
         >
-          <span class="theme-icon">☼</span>
-          <span class="theme-label">Light</span>
+          <span id="themeIcon" aria-hidden="true">☼</span>
+          <span class="theme-text">Light</span>
         </button>
+
       </nav>
 
     </div>
@@ -133,15 +189,11 @@
 
   </header>
 
-
-  <!-- =========================
-       MAIN
-  ========================== -->
-
   <main id="main">
 
-    <!-- HERO -->
-
+    <!-- =========================
+         HERO
+    ========================== -->
     <section
       class="hero section"
       id="top"
@@ -152,20 +204,23 @@
 
         <div class="hero-copy reveal">
 
-          <div class="status-pill">
-            <span class="status-dot"></span>
+          <div class="availability">
+            <span></span>
             Available for frontend opportunities
           </div>
 
           <p class="eyebrow">
-            Frontend Developer · Nigeria
+            Frontend Developer
+            <span>·</span>
+            Nigeria
           </p>
 
           <h1 id="hero-title">
-            I turn ideas into
+            I build
             <span class="gradient-text">
-              useful digital experiences.
+              digital experiences
             </span>
+            that feel as good as they work.
           </h1>
 
           <p class="hero-description">
@@ -181,125 +236,130 @@
               href="#projects"
             >
               Explore my work
-              <span>↗</span>
+              <span aria-hidden="true">↗️</span>
             </a>
 
             <a
-              class="button button-ghost magnetic"
+              class="button button-secondary magnetic"
               href="#contact"
             >
               Let's talk
-              <span>→</span>
+              <span aria-hidden="true">→</span>
             </a>
 
           </div>
 
-          <div class="hero-meta">
+          <div
+            class="hero-proof"
+            aria-label="Portfolio highlights"
+          >
 
-            <span>
-              <b>04+</b>
-              selected projects
-            </span>
+            <div>
+              <strong>04+</strong>
+              <span>selected projects</span>
+            </div>
 
-            <span class="meta-separator">•</span>
+            <div>
+              <strong>UI/UX</strong>
+              <span>detail driven</span>
+            </div>
 
-            <span>
-              <b>Frontend</b>
-              focused
-            </span>
+            <div>
+              <strong>100%</strong>
+              <span>responsive mindset</span>
+            </div>
 
           </div>
 
         </div>
 
-
-        <!-- HERO VISUAL -->
-
+        <!-- Hero visual -->
         <div class="hero-visual reveal reveal-delay">
 
-          <div class="orb orb-one"></div>
-          <div class="orb orb-two"></div>
+          <div
+            class="hero-orbit orbit-one"
+            aria-hidden="true"
+          ></div>
 
           <div
-            class="code-card glass tilt-card"
+            class="hero-orbit orbit-two"
+            aria-hidden="true"
+          ></div>
+
+          <div
+            class="profile-card glass tilt-card"
             data-tilt
           >
 
-            <div class="window-bar">
+            <div class="profile-card-top">
 
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-              <span class="window-dot"></span>
-
-              <span class="window-title">
-                ayomide.js
+              <span class="window-dots">
+                <i></i>
+                <i></i>
+                <i></i>
               </span>
+
+              <span>ayomide.dev</span>
+
+              <span class="mini-status">
+                <b></b>
+                available
+              </span>
+
+            </div>
+
+            <div class="profile-main">
+
+              <div class="profile-image-wrap">
+
+                <img
+                  src="images/profile.jpeg"
+                  alt="Portrait of Adeniyi Ayomide"
+                  width="220"
+                  height="220"
+                  fetchpriority="high"
+                >
+
+                <span
+                  class="image-glow"
+                  aria-hidden="true"
+                ></span>
+
+              </div>
+
+              <div>
+
+                <p class="profile-kicker">
+                  Frontend / Builder
+                </p>
+
+                <h2>
+                  Adeniyi<br>
+                  <span>Ayomide</span>
+                </h2>
+
+                <p class="profile-copy">
+                  Interfaces with clarity, motion and purpose.
+                </p>
+
+              </div>
 
             </div>
 
             <div
-              class="code-body"
-              aria-label="Decorative code preview"
+              class="code-strip"
+              aria-hidden="true"
             >
-
-              <span class="code-line">
-                <i>const</i> developer = {
-              </span>
-
-              <span class="code-line indent">
-                <em>name:</em>
-                <b>"Adeniyi Ayomide"</b>,
-              </span>
-
-              <span class="code-line indent">
-                <em>role:</em>
-                <b>"Frontend Developer"</b>,
-              </span>
-
-              <span class="code-line indent">
-                <em>stack:</em> [
-              </span>
-
-              <span class="code-line indent2">
-                <b>"HTML"</b>,
-                <b>"CSS"</b>,
-                <b>"JavaScript"</b>,
-              </span>
-
-              <span class="code-line indent2">
-                <b>"React"</b>,
-                <b>"Next.js"</b>,
-                <b>"Tailwind"</b>
-              </span>
-
-              <span class="code-line indent">
-                ],
-              </span>
-
-              <span class="code-line indent">
-                <em>mindset:</em>
-                <b>"Keep building."</b>
-              </span>
-
-              <span class="code-line">
-                };
-              </span>
-
-              <span class="code-line cursor-line">
-                <i>developer</i>.<i>build</i>();
-                <span class="blink">▌</span>
-              </span>
-
+              <span>const</span>
+              developer =
+              <strong>"keep building"</strong>;
             </div>
 
           </div>
 
+          <div class="floating-chip chip-one glass">
 
-          <div class="floating-card float-a glass">
-
-            <span class="mini-icon">
-              ✦
-            </span>
+            <span>✦</span>
 
             <div>
               <small>Design</small>
@@ -308,12 +368,9 @@
 
           </div>
 
+          <div class="floating-chip chip-two glass">
 
-          <div class="floating-card float-b glass">
-
-            <span class="mini-icon">
-              ⌘
-            </span>
+            <span>⌘</span>
 
             <div>
               <small>Code</small>
@@ -326,20 +383,23 @@
 
       </div>
 
-
-      <div class="hero-scroll" aria-hidden="true">
+      <a
+        class="scroll-cue"
+        href="#about"
+        aria-label="Scroll to about"
+      >
         <span>Scroll to explore</span>
         <i></i>
-      </div>
+      </a>
 
     </section>
 
-
-    <!-- TECHNOLOGY MARQUEE -->
-
+    <!-- =========================
+         TECH MARQUEE
+    ========================== -->
     <section
-      class="marquee-section"
-      aria-label="Technologies"
+      class="marquee"
+      aria-label="Technology stack"
     >
 
       <div class="marquee-track">
@@ -386,13 +446,19 @@
         <span>Tailwind CSS</span>
         <b>✦</b>
 
+        <span>Git & GitHub</span>
+        <b>✦</b>
+
+        <span>Responsive UI</span>
+        <b>✦</b>
+
       </div>
 
     </section>
 
-
-    <!-- ABOUT -->
-
+    <!-- =========================
+         ABOUT
+    ========================== -->
     <section
       class="section"
       id="about"
@@ -401,11 +467,11 @@
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-          <span class="section-number">
+          <p class="section-number">
             01 / About
-          </span>
+          </p>
 
           <h2 id="about-title">
             A developer who cares about
@@ -414,53 +480,62 @@
             </span>
           </h2>
 
+          <p>
+            I like turning blank pages into interfaces
+            that are useful, polished and easy to navigate.
+          </p>
+
         </div>
 
+        <div class="about-grid">
 
-        <div class="about-layout">
+          <article class="about-card glass reveal">
 
-          <article class="about-main glass reveal">
+            <div class="about-index">
+              01
+            </div>
 
             <p class="large-copy">
               I enjoy taking a blank page and turning it
               into an interface that feels
-              <strong>clear, fast and intentional.</strong>
+              <strong>
+                clear, fast and intentional.
+              </strong>
             </p>
 
             <p>
-              My work is grounded in semantic HTML, modern CSS
-              and JavaScript. I'm continuing to grow with React,
-              Next.js, TypeScript and Tailwind CSS while building
-              practical projects that solve real problems.
+              My work is grounded in semantic HTML,
+              modern CSS and JavaScript. I'm growing with
+              React, Next.js, TypeScript and Tailwind CSS
+              while building practical projects that solve
+              real problems.
             </p>
 
             <p>
               I value mobile-first thinking, accessible
-              interactions, maintainable code and a willingness
-              to keep learning. The goal isn't simply to make
-              a page look good — it's to make the experience work.
+              interactions, maintainable code and a
+              willingness to keep learning. The goal isn't
+              simply to make a page look good — it's to make
+              the experience work.
             </p>
 
-            <div class="about-signature">
+            <div class="learning-row">
 
-              <span>
-                Currently learning
-              </span>
+              <span>Currently learning</span>
 
-              <div class="learning-tags">
-                <span>React</span>
-                <span>Next.js</span>
-                <span>TypeScript</span>
-                <span>Tailwind</span>
+              <div>
+                <b>React</b>
+                <b>Next.js</b>
+                <b>TypeScript</b>
+                <b>Tailwind</b>
               </div>
 
             </div>
 
           </article>
 
-
           <aside
-            class="timeline reveal reveal-delay"
+            class="timeline glass reveal reveal-delay"
             aria-label="Learning timeline"
           >
 
@@ -468,9 +543,7 @@
 
               <span class="timeline-dot"></span>
 
-              <small>
-                Foundation
-              </small>
+              <small>Foundation</small>
 
               <h3>
                 HTML & CSS
@@ -483,14 +556,11 @@
 
             </div>
 
-
             <div class="timeline-item">
 
               <span class="timeline-dot"></span>
 
-              <small>
-                Building
-              </small>
+              <small>Building</small>
 
               <h3>
                 JavaScript
@@ -503,22 +573,20 @@
 
             </div>
 
-
             <div class="timeline-item">
 
               <span class="timeline-dot"></span>
 
-              <small>
-                Next chapter
-              </small>
+              <small>Next chapter</small>
 
               <h3>
                 React ecosystem
               </h3>
 
               <p>
-                Component thinking, modern tooling and
-                production-oriented frontend development.
+                Component thinking, modern tooling
+                and production-oriented frontend
+                development.
               </p>
 
             </div>
@@ -531,9 +599,9 @@
 
     </section>
 
-
-    <!-- PROJECTS -->
-
+    <!-- =========================
+         PROJECTS
+    ========================== -->
     <section
       class="section projects-section"
       id="projects"
@@ -542,13 +610,13 @@
 
       <div class="container">
 
-        <div class="section-heading split-heading reveal">
+        <div class="section-head section-head-split reveal">
 
           <div>
 
-            <span class="section-number">
+            <p class="section-number">
               02 / Selected work
-            </span>
+            </p>
 
             <h2 id="projects-title">
               Things I've
@@ -560,17 +628,14 @@
           </div>
 
           <p>
-            Real projects, practical interfaces and a
-            growing frontend toolkit.
+            Real projects, practical interfaces and
+            a growing frontend toolkit.
           </p>
 
         </div>
 
-
-        <!-- FILTERS -->
-
         <div
-          class="filters reveal"
+          class="project-controls reveal"
           role="group"
           aria-label="Filter projects"
         >
@@ -580,7 +645,7 @@
             type="button"
             data-filter="all"
           >
-            All
+            All work
           </button>
 
           <button
@@ -609,59 +674,46 @@
 
         </div>
 
-
-        <!-- PROJECT GRID -->
-
         <div
           class="bento-grid"
           id="projectGrid"
         >
 
-          <!-- PROJECT 1 -->
-
+          <!-- Project 01 -->
           <article
             class="project-card project-featured glass tilt-card reveal"
             data-category="website"
             data-tilt
           >
 
-            <div class="project-preview preview-mosque">
+            <div class="project-media media-mosque">
 
-              <div class="preview-browser">
+              <div class="browser-ui">
 
-                <div class="preview-top">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
+                <span></span>
+                <span></span>
+                <span></span>
 
-                <div class="preview-content">
-
-                  <div class="preview-sidebar"></div>
-
-                  <div class="preview-lines">
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                  </div>
-
-                  <div class="preview-stat"></div>
-
+                <div class="browser-grid">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
                 </div>
 
               </div>
 
-              <span class="preview-label">
+              <span class="media-badge">
                 Responsive website
               </span>
 
             </div>
 
+            <div class="project-body">
 
-            <div class="project-info">
-
-              <div class="project-topline">
+              <div class="project-meta">
                 <span>01</span>
                 <span>2025</span>
               </div>
@@ -672,14 +724,14 @@
 
               <p>
                 A responsive digital presence for Central
-                Mosque Ebutte-Igbogbo with prayer times and
-                event announcements.
+                Mosque Ebutte-Igbogbo with prayer times
+                and event announcements.
               </p>
 
-              <div class="tech-list">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+              <div class="tag-row">
+                <b>HTML</b>
+                <b>CSS</b>
+                <b>JavaScript</b>
               </div>
 
               <a
@@ -688,28 +740,26 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live project
-                <span>↗</span>
+                View live project
+                <span>↗️</span>
               </a>
 
             </div>
 
           </article>
 
-
-          <!-- PROJECT 2 -->
-
+          <!-- Project 02 -->
           <article
             class="project-card glass tilt-card reveal reveal-delay"
             data-category="tool"
             data-tilt
           >
 
-            <div class="project-preview preview-keygen">
+            <div class="project-media media-keygen">
 
-              <div class="terminal">
+              <div class="terminal-ui">
 
-                <span class="terminal-line">
+                <span>
                   $ generatePassword()
                 </span>
 
@@ -718,17 +768,16 @@
                 </strong>
 
                 <small>
-                  16 characters · secure · copied
+                  16 chars · secure · copied
                 </small>
 
               </div>
 
             </div>
 
+            <div class="project-body">
 
-            <div class="project-info">
-
-              <div class="project-topline">
+              <div class="project-meta">
                 <span>02</span>
                 <span>Tool</span>
               </div>
@@ -739,12 +788,13 @@
 
               <p>
                 Custom password generation with copy
-                functionality and an accessible responsive interface.
+                functionality and an accessible responsive
+                interface.
               </p>
 
-              <div class="tech-list">
-                <span>JavaScript</span>
-                <span>CSS</span>
+              <div class="tag-row">
+                <b>JavaScript</b>
+                <b>CSS</b>
               </div>
 
               <a
@@ -753,29 +803,26 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live project
-                <span>↗</span>
+                View live project
+                <span>↗️</span>
               </a>
 
             </div>
 
           </article>
 
-
-          <!-- PROJECT 3 -->
-
+          <!-- Project 03 -->
           <article
             class="project-card glass tilt-card reveal"
             data-category="dashboard"
             data-tilt
           >
 
-            <div class="project-preview preview-analytics">
+            <div class="project-media media-analytics">
 
-              <div class="analytics-preview">
+              <div class="analytics-ui">
 
-                <div class="chart-bars">
-                  <i></i>
+                <div class="chart-area">
                   <i></i>
                   <i></i>
                   <i></i>
@@ -785,18 +832,17 @@
                 </div>
 
                 <div class="chart-card">
-                  <span></span>
-                  <b></b>
+                  <b>+28.4%</b>
+                  <span>growth</span>
                 </div>
 
               </div>
 
             </div>
 
+            <div class="project-body">
 
-            <div class="project-info">
-
-              <div class="project-topline">
+              <div class="project-meta">
                 <span>03</span>
                 <span>Dashboard</span>
               </div>
@@ -810,10 +856,10 @@
                 into a responsive business interface.
               </p>
 
-              <div class="tech-list">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+              <div class="tag-row">
+                <b>HTML</b>
+                <b>CSS</b>
+                <b>JavaScript</b>
               </div>
 
               <a
@@ -822,26 +868,24 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live project
-                <span>↗</span>
+                View live project
+                <span>↗️</span>
               </a>
 
             </div>
 
           </article>
 
-
-          <!-- PROJECT 4 -->
-
+          <!-- Project 04 -->
           <article
             class="project-card project-wide glass tilt-card reveal reveal-delay"
             data-category="website"
             data-tilt
           >
 
-            <div class="project-preview preview-planner">
+            <div class="project-media media-planner">
 
-              <div class="planner-card">
+              <div class="planner-ui">
 
                 <span>
                   Today
@@ -851,7 +895,7 @@
                   Plan your salah & Quran time
                 </strong>
 
-                <div class="planner-progress">
+                <div class="progress-bar">
                   <i></i>
                 </div>
 
@@ -863,10 +907,9 @@
 
             </div>
 
+            <div class="project-body">
 
-            <div class="project-info">
-
-              <div class="project-topline">
+              <div class="project-meta">
                 <span>04</span>
                 <span>Web app</span>
               </div>
@@ -877,13 +920,14 @@
 
               <p>
                 A single-page dashboard concept for Islamic
-                reminders, prayer planning and Quran-related activities.
+                reminders, prayer planning and Quran-related
+                activities.
               </p>
 
-              <div class="tech-list">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
+              <div class="tag-row">
+                <b>HTML</b>
+                <b>CSS</b>
+                <b>JavaScript</b>
               </div>
 
               <a
@@ -892,8 +936,8 @@
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live project
-                <span>↗</span>
+                View live project
+                <span>↗️</span>
               </a>
 
             </div>
@@ -902,16 +946,13 @@
 
         </div>
 
-
-        <!-- GITHUB CTA -->
-
         <div class="github-cta glass reveal">
 
           <div>
 
-            <span class="section-number">
+            <p class="section-number">
               Open source
-            </span>
+            </p>
 
             <h3>
               See more experiments & code on GitHub.
@@ -920,12 +961,12 @@
           </div>
 
           <a
-            class="button button-ghost magnetic"
+            class="button button-secondary magnetic"
             href="https://github.com/Jamal4dev"
             target="_blank"
             rel="noopener noreferrer"
           >
-            GitHub profile ↗
+            GitHub profile ↗️
           </a>
 
         </div>
@@ -934,9 +975,9 @@
 
     </section>
 
-
-    <!-- SKILLS -->
-
+    <!-- =========================
+         SKILLS
+    ========================== -->
     <section
       class="section"
       id="skills"
@@ -945,11 +986,11 @@
 
       <div class="container">
 
-        <div class="section-heading reveal">
+        <div class="section-head reveal">
 
-          <span class="section-number">
+          <p class="section-number">
             03 / Toolkit
-          </span>
+          </p>
 
           <h2 id="skills-title">
             Tools I use to
@@ -958,25 +999,33 @@
             </span>
           </h2>
 
+          <p>
+            A growing toolkit shaped around clean
+            interfaces, strong fundamentals and
+            practical delivery.
+          </p>
+
         </div>
 
+        <div class="skills-grid">
 
-        <div class="skills-layout">
+          <article class="skill-card glass reveal">
 
-          <div class="skill-card glass reveal">
+            <div class="skill-title">
 
-            <div class="skill-head">
               <span>01</span>
+
               <h3>
                 Frontend fundamentals
               </h3>
+
             </div>
 
             <div class="skill-row">
 
               <div>
                 <span>HTML5</span>
-                <b>90%</b>
+                <strong>90%</strong>
               </div>
 
               <span class="skill-track">
@@ -989,7 +1038,7 @@
 
               <div>
                 <span>CSS3</span>
-                <b>84%</b>
+                <strong>84%</strong>
               </div>
 
               <span class="skill-track">
@@ -1002,7 +1051,7 @@
 
               <div>
                 <span>JavaScript</span>
-                <b>70%</b>
+                <strong>70%</strong>
               </div>
 
               <span class="skill-track">
@@ -1011,23 +1060,25 @@
 
             </div>
 
-          </div>
+          </article>
 
+          <article class="skill-card glass reveal reveal-delay">
 
-          <div class="skill-card glass reveal reveal-delay">
+            <div class="skill-title">
 
-            <div class="skill-head">
               <span>02</span>
+
               <h3>
                 Modern frontend
               </h3>
+
             </div>
 
             <div class="skill-row">
 
               <div>
                 <span>React</span>
-                <b>45%</b>
+                <strong>45%</strong>
               </div>
 
               <span class="skill-track">
@@ -1040,7 +1091,7 @@
 
               <div>
                 <span>Next.js</span>
-                <b>40%</b>
+                <strong>40%</strong>
               </div>
 
               <span class="skill-track">
@@ -1053,7 +1104,7 @@
 
               <div>
                 <span>Tailwind CSS</span>
-                <b>40%</b>
+                <strong>40%</strong>
               </div>
 
               <span class="skill-track">
@@ -1062,8 +1113,7 @@
 
             </div>
 
-          </div>
-
+          </article>
 
           <div class="tech-cloud glass reveal">
 
@@ -1086,9 +1136,9 @@
 
     </section>
 
-
-    <!-- CONTACT -->
-
+    <!-- =========================
+         CONTACT
+    ========================== -->
     <section
       class="section contact-section"
       id="contact"
@@ -1101,23 +1151,23 @@
 
           <div class="contact-copy">
 
-            <span class="section-number">
+            <p class="section-number">
               04 / Contact
-            </span>
+            </p>
 
             <h2 id="contact-title">
-              Have an idea?
-              <br>
+              Have an idea?<br>
+
               <span class="gradient-text">
                 Let's make it real.
               </span>
             </h2>
 
             <p>
-              I'm open to junior frontend roles, freelance
-              projects and opportunities to grow with a strong team.
+              I'm open to junior frontend roles,
+              freelance projects and opportunities to
+              grow with a strong team.
             </p>
-
 
             <div class="contact-links">
 
@@ -1148,7 +1198,6 @@
 
           </div>
 
-
           <form
             class="contact-form"
             id="contactForm"
@@ -1157,7 +1206,7 @@
 
             <div class="field-row">
 
-              <label>
+              <label for="name">
 
                 <span>Name</span>
 
@@ -1167,8 +1216,8 @@
                   type="text"
                   autocomplete="name"
                   placeholder="Your name"
-                  required
                   minlength="2"
+                  required
                 >
 
                 <small
@@ -1178,8 +1227,7 @@
 
               </label>
 
-
-              <label>
+              <label for="email">
 
                 <span>Email</span>
 
@@ -1201,8 +1249,7 @@
 
             </div>
 
-
-            <label>
+            <label for="message">
 
               <span>Message</span>
 
@@ -1210,9 +1257,9 @@
                 id="message"
                 name="message"
                 rows="6"
+                minlength="10"
                 placeholder="Tell me a little about the project..."
                 required
-                minlength="10"
               ></textarea>
 
               <small
@@ -1222,18 +1269,17 @@
 
             </label>
 
-
             <button
-              class="button button-primary submit-button magnetic"
+              class="button button-primary magnetic"
               type="submit"
             >
               <span>Prepare email</span>
-              <span>↗</span>
+              <span>↗️</span>
             </button>
 
             <p class="form-note">
-              Submitting opens your email app with the message prepared.
-              No data is stored on this site.
+              Submitting opens your email app with the
+              message prepared. No data is stored on this site.
             </p>
 
           </form>
@@ -1246,22 +1292,21 @@
 
   </main>
 
-
   <!-- =========================
        FOOTER
   ========================== -->
-
   <footer class="footer">
 
     <div class="container footer-inner">
 
       <span>
-        © <span id="year"></span>
+        ©️
+        <span id="year"></span>
         Adeniyi Ayomide
       </span>
 
       <span>
-        Designed & built with HTML, CSS & JavaScript.
+        Built with intention.
       </span>
 
       <a href="#top">
@@ -1272,7 +1317,6 @@
 
   </footer>
 
-
   <div
     class="toast"
     id="toast"
@@ -1280,8 +1324,22 @@
     aria-live="polite"
   ></div>
 
+  <script src="script.js" defer></script>
 
-  <script defer src="script.js"></script>
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Adeniyi Ayomide",
+    "url": "https://ayomide1adeniyi.netlify.app/",
+    "jobTitle": "Frontend Developer",
+    "sameAs": [
+      "https://github.com/Jamal4dev",
+      "https://www.linkedin.com/in/ayomide-adeniyi-91746130a"
+    ]
+  }
+  </script>
 
 </body>
 </html>
