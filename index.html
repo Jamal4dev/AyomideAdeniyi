@@ -1,520 +1,1287 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta
     name="description"
-    content="Adeniyi Ayomide is a frontend developer building responsive, accessible, and user-friendly websites with HTML, CSS, JavaScript, React, Next.js, and Tailwind CSS."
+    content="Adeniyi Ayomide — Frontend Developer building responsive, accessible and polished web experiences with HTML, CSS, JavaScript and modern frontend tools."
   >
 
   <meta name="author" content="Adeniyi Ayomide">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#09090b">
+
+  <meta property="og:title" content="Adeniyi Ayomide — Frontend Developer">
+  <meta
+    property="og:description"
+    content="Frontend developer building responsive, accessible and user-friendly web experiences."
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ayomide1adeniyi.netlify.app/">
+
+  <link rel="canonical" href="https://ayomide1adeniyi.netlify.app/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="styles.css">
 
   <title>Adeniyi Ayomide | Frontend Developer</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <script>
+    (() => {
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark =
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      document.documentElement.dataset.theme =
+        savedTheme || (systemPrefersDark ? "dark" : "light");
+    })();
+  </script>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="logo">Adeniyi Ayomide</a>
 
-      <nav id="nav" class="site-nav" aria-label="Main navigation">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#tools">Tools</a>
-        <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">
+    Skip to content
+  </a>
+
+  <div class="noise" aria-hidden="true"></div>
+
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="site-header" id="header">
+
+    <div class="container nav-wrap">
+
+      <a
+        class="brand magnetic"
+        href="#top"
+        aria-label="Adeniyi Ayomide home"
+      >
+        <span class="brand-mark">AA</span>
+
+        <span>
+          Adeniyi<span class="brand-dot">.</span>
+        </span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-controls="siteNav"
+        aria-expanded="false"
+        aria-label="Open navigation"
+      >
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav
+        class="site-nav"
+        id="siteNav"
+        aria-label="Primary navigation"
+      >
+        <a class="nav-link active" href="#about">
+          About
+        </a>
+
+        <a class="nav-link" href="#projects">
+          Work
+        </a>
+
+        <a class="nav-link" href="#skills">
+          Skills
+        </a>
+
+        <a class="nav-link" href="#contact">
+          Contact
+        </a>
 
         <button
           class="theme-toggle"
           id="themeToggle"
           type="button"
-          aria-label="Switch to dark mode"
+          aria-label="Toggle color theme"
         >
-          🌙 Dark
+          <span class="theme-icon">☼</span>
+          <span class="theme-label">Light</span>
         </button>
       </nav>
 
-      <button
-        class="hamburger"
-        id="hamburger"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="nav"
-      >
-        ☰
-      </button>
     </div>
+
+    <div
+      class="scroll-progress"
+      id="scrollProgress"
+      aria-hidden="true"
+    ></div>
+
   </header>
 
-  <main id="top">
-    <section class="hero container">
-      <div class="hero-content">
-        <img
-          src="images/profile.jpeg"
-          alt="Portrait of Adeniyi Ayomide"
-          class="profile-image"
-        >
 
-        <p class="eyebrow">Frontend developer in training</p>
+  <!-- =========================
+       MAIN
+  ========================== -->
 
-        <h1>Hi, I'm Adeniyi Ayomide</h1>
+  <main id="main">
 
-        <p id="heroTagline" class="hero-copy">
-          I build responsive, accessible, and user-friendly web experiences.
-        </p>
+    <!-- HERO -->
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn">View Work</a>
-          <a href="#contact" class="btn btn-outline">Contact Me</a>
-        </div>
+    <section
+      class="hero section"
+      id="top"
+      aria-labelledby="hero-title"
+    >
 
-        <div class="hero-highlights">
-          <div class="highlight-card">
-            <span>Current focus</span>
-            <strong>Responsive layouts & accessibility</strong>
+      <div class="hero-grid container">
+
+        <div class="hero-copy reveal">
+
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Available for frontend opportunities
           </div>
 
-          <div class="highlight-card">
-            <span>Learning</span>
-            <strong>JavaScript, React, Next.js & Tailwind CSS</strong>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="container reveal">
-      <h2>About Me</h2>
-
-      <div class="card about-grid">
-        <div>
-          <p>
-            I'm a self-taught developer focused on creating simple,
-            user-friendly web experiences. I enjoy working with HTML, CSS,
-            and JavaScript, and I'm currently learning React, Next.js,
-            TypeScript, and Tailwind CSS.
+          <p class="eyebrow">
+            Frontend Developer · Nigeria
           </p>
 
-          <p>
-            When I'm not coding, you'll find me reading or playing chess.
-          </p>
-        </div>
+          <h1 id="hero-title">
+            I turn ideas into
+            <span class="gradient-text">
+              useful digital experiences.
+            </span>
+          </h1>
 
-        <div class="about-side">
-          <p class="about-note">What I bring to a team:</p>
-
-          <ul>
-            <li>Clear, clean layout structure</li>
-            <li>Mobile-friendly design</li>
-            <li>Accessibility-conscious thinking</li>
-            <li>A willingness to learn and improve quickly</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="container reveal">
-      <h2>Projects</h2>
-
-      <p class="section-copy">
-        I’m building a small but growing portfolio. Use the filters to explore
-        the kind of work I’m learning and improving.
-      </p>
-
-      <div class="project-filters" aria-label="Project filters">
-        <button
-          class="filter-btn active"
-          type="button"
-          data-filter="all"
-        >
-          All
-        </button>
-
-        <button
-          class="filter-btn"
-          type="button"
-          data-filter="website"
-        >
-          Websites
-        </button>
-
-        <button
-          class="filter-btn"
-          type="button"
-          data-filter="tool"
-        >
-          Tools
-        </button>
-
-        <button
-          class="filter-btn"
-          type="button"
-          data-filter="learning"
-        >
-          Learning
-        </button>
-      </div>
-
-      <div class="grid project-grid">
-        <article class="card project-card" data-category="website">
-          <p class="project-tag">Website</p>
-
-          <h3>Mosque Website</h3>
-
-          <p>
-            A responsive site for Central Mosque Ebutte-Igbogbo, Ikorodu,
-            with prayer times and event announcements.
+          <p class="hero-description">
+            I'm <strong>Adeniyi Ayomide</strong>, a frontend developer
+            focused on responsive interfaces, clean interactions,
+            accessibility and thoughtful user experience.
           </p>
 
-          <a
-            href="https://ridwanullahikorodu.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project →
-          </a>
-        </article>
+          <div class="hero-actions">
 
-        <article class="card project-card" data-category="tool">
-          <p class="project-tag">Tool</p>
-
-          <h3>Password Generator</h3>
-
-          <p>
-            A random password generator with custom options and convenient
-            copy functionality. Fully responsive and accessible.
-          </p>
-
-          <a
-            href="https://projectkeygen.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project →
-          </a>
-        </article>
-
-        <article class="card project-card" data-category="learning">
-          <p class="project-tag">Learning</p>
-
-          <h3>Daily Quran & Prayer Dashboard</h3>
-
-          <p>
-            A single-page dashboard for Islamic reminders, prayer planning,
-            and Quran-related activities.
-          </p>
-
-          <a
-            href="https://salahquranplanner.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project →
-          </a>
-        </article>
-
-        <article class="card project-card" data-category="learning">
-          <p class="project-tag">Learning</p>
-
-          <h3>Business Analytics Dashboard</h3>
-
-          <p>
-            A responsive analytics dashboard that organises key metrics,
-            charts, filters, and tables into an accessible interface.
-          </p>
-
-          <a
-            href="https://business-analyticsdashboard.netlify.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View Project →
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <section id="skills" class="container reveal">
-      <h2>Skills</h2>
-
-      <div class="card">
-        <div class="skills">
-          <span class="skill">HTML5</span>
-          <span class="skill">CSS3</span>
-          <span class="skill">JavaScript</span>
-          <span class="skill">TypeScript</span>
-          <span class="skill">React</span>
-          <span class="skill">Next.js</span>
-          <span class="skill">Tailwind CSS</span>
-          <span class="skill">Git & GitHub</span>
-          <span class="skill">Responsive Design</span>
-          <span class="skill">Accessibility</span>
-          <span class="skill">Component-based architecture</span>
-        </div>
-
-        <div class="skill-progress-list">
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>HTML</strong>
-              <span>90%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="90"></span>
-            </div>
-          </div>
-
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>CSS</strong>
-              <span>84%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="84"></span>
-            </div>
-          </div>
-
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>JavaScript</strong>
-              <span>70%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="70"></span>
-            </div>
-          </div>
-
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>React</strong>
-              <span>45%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="45"></span>
-            </div>
-          </div>
-
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>Tailwind CSS</strong>
-              <span>40%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="40"></span>
-            </div>
-          </div>
-
-          <div class="progress-row">
-            <div class="progress-labels">
-              <strong>Next.js</strong>
-              <span>40%</span>
-            </div>
-
-            <div class="progress-track">
-              <span class="progress-fill" data-progress="40"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tools" class="container reveal">
-      <h2>Tools</h2>
-
-      <p class="section-copy">
-        Tools I use while building, testing, debugging, and managing frontend projects.
-      </p>
-
-      <div class="card">
-        <div class="tools-grid">
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">⌘</span>
-
-            <div>
-              <h3>VS Code</h3>
-              <p>
-                My primary code editor for writing and organising projects.
-              </p>
-            </div>
-          </div>
-
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">›_</span>
-
-            <div>
-              <h3>Git Bash</h3>
-              <p>
-                Used for terminal commands, Git workflows, and project navigation.
-              </p>
-            </div>
-          </div>
-
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">⚡</span>
-
-            <div>
-              <h3>Vite</h3>
-              <p>
-                Used to create and run fast modern frontend development projects.
-              </p>
-            </div>
-          </div>
-
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">npm</span>
-
-            <div>
-              <h3>npm</h3>
-              <p>
-                Used to install packages, run scripts, and manage dependencies.
-              </p>
-            </div>
-          </div>
-
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">↔</span>
-
-            <div>
-              <h3>Postman</h3>
-              <p>
-                Used for sending requests and learning how APIs work.
-              </p>
-            </div>
-          </div>
-
-          <div class="tool-item">
-            <span class="tool-icon" aria-hidden="true">⌕</span>
-
-            <div>
-              <h3>Chrome DevTools</h3>
-              <p>
-                Used for debugging, testing responsiveness, and inspecting webpages.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="container reveal">
-      <h2>Contact</h2>
-
-      <div class="contact-layout">
-        <div class="card contact-details">
-          <p>Have a project in mind? Let's talk.</p>
-
-          <p>
-            <strong>Email:</strong>
-            <a href="mailto:addysam@yahoo.com">addysam@yahoo.com</a>
-          </p>
-
-          <p>
-            <strong>GitHub:</strong>
             <a
-              href="https://github.com/Jamal4dev"
-              target="_blank"
-              rel="noopener noreferrer"
+              class="button button-primary magnetic"
+              href="#projects"
             >
-              github.com/Jamal4dev
+              Explore my work
+              <span>↗</span>
             </a>
-          </p>
 
-          <p>
-            <strong>LinkedIn:</strong>
             <a
-              href="https://www.linkedin.com/in/ayomide-adeniyi-91746130a"
-              target="_blank"
-              rel="noopener noreferrer"
+              class="button button-ghost magnetic"
+              href="#contact"
             >
-              linkedin.com/in/ayomide-adeniyi
+              Let's talk
+              <span>→</span>
             </a>
-          </p>
 
-          <p class="contact-note">
-            You can also send a quick message using the form. Your email
-            application will open with the message prepared for sending.
-          </p>
+          </div>
+
+          <div class="hero-meta">
+
+            <span>
+              <b>04+</b>
+              selected projects
+            </span>
+
+            <span class="meta-separator">•</span>
+
+            <span>
+              <b>Frontend</b>
+              focused
+            </span>
+
+          </div>
+
         </div>
 
-        <form
-          id="contactForm"
-          class="card contact-form"
-          action="mailto:addysam@yahoo.com"
-          method="post"
-          enctype="text/plain"
-          novalidate
+
+        <!-- HERO VISUAL -->
+
+        <div class="hero-visual reveal reveal-delay">
+
+          <div class="orb orb-one"></div>
+          <div class="orb orb-two"></div>
+
+          <div
+            class="code-card glass tilt-card"
+            data-tilt
+          >
+
+            <div class="window-bar">
+
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+              <span class="window-dot"></span>
+
+              <span class="window-title">
+                ayomide.js
+              </span>
+
+            </div>
+
+            <div
+              class="code-body"
+              aria-label="Decorative code preview"
+            >
+
+              <span class="code-line">
+                <i>const</i> developer = {
+              </span>
+
+              <span class="code-line indent">
+                <em>name:</em>
+                <b>"Adeniyi Ayomide"</b>,
+              </span>
+
+              <span class="code-line indent">
+                <em>role:</em>
+                <b>"Frontend Developer"</b>,
+              </span>
+
+              <span class="code-line indent">
+                <em>stack:</em> [
+              </span>
+
+              <span class="code-line indent2">
+                <b>"HTML"</b>,
+                <b>"CSS"</b>,
+                <b>"JavaScript"</b>,
+              </span>
+
+              <span class="code-line indent2">
+                <b>"React"</b>,
+                <b>"Next.js"</b>,
+                <b>"Tailwind"</b>
+              </span>
+
+              <span class="code-line indent">
+                ],
+              </span>
+
+              <span class="code-line indent">
+                <em>mindset:</em>
+                <b>"Keep building."</b>
+              </span>
+
+              <span class="code-line">
+                };
+              </span>
+
+              <span class="code-line cursor-line">
+                <i>developer</i>.<i>build</i>();
+                <span class="blink">▌</span>
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="floating-card float-a glass">
+
+            <span class="mini-icon">
+              ✦
+            </span>
+
+            <div>
+              <small>Design</small>
+              <strong>Responsive first</strong>
+            </div>
+
+          </div>
+
+
+          <div class="floating-card float-b glass">
+
+            <span class="mini-icon">
+              ⌘
+            </span>
+
+            <div>
+              <small>Code</small>
+              <strong>Clean & accessible</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span>Scroll to explore</span>
+        <i></i>
+      </div>
+
+    </section>
+
+
+    <!-- TECHNOLOGY MARQUEE -->
+
+    <section
+      class="marquee-section"
+      aria-label="Technologies"
+    >
+
+      <div class="marquee-track">
+
+        <span>HTML5</span>
+        <b>✦</b>
+
+        <span>CSS3</span>
+        <b>✦</b>
+
+        <span>JavaScript</span>
+        <b>✦</b>
+
+        <span>React</span>
+        <b>✦</b>
+
+        <span>Next.js</span>
+        <b>✦</b>
+
+        <span>Tailwind CSS</span>
+        <b>✦</b>
+
+        <span>Git & GitHub</span>
+        <b>✦</b>
+
+        <span>Responsive UI</span>
+        <b>✦</b>
+
+        <span>HTML5</span>
+        <b>✦</b>
+
+        <span>CSS3</span>
+        <b>✦</b>
+
+        <span>JavaScript</span>
+        <b>✦</b>
+
+        <span>React</span>
+        <b>✦</b>
+
+        <span>Next.js</span>
+        <b>✦</b>
+
+        <span>Tailwind CSS</span>
+        <b>✦</b>
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section
+      class="section"
+      id="about"
+      aria-labelledby="about-title"
+    >
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="section-number">
+            01 / About
+          </span>
+
+          <h2 id="about-title">
+            A developer who cares about
+            <span class="gradient-text">
+              the details.
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="about-layout">
+
+          <article class="about-main glass reveal">
+
+            <p class="large-copy">
+              I enjoy taking a blank page and turning it
+              into an interface that feels
+              <strong>clear, fast and intentional.</strong>
+            </p>
+
+            <p>
+              My work is grounded in semantic HTML, modern CSS
+              and JavaScript. I'm continuing to grow with React,
+              Next.js, TypeScript and Tailwind CSS while building
+              practical projects that solve real problems.
+            </p>
+
+            <p>
+              I value mobile-first thinking, accessible
+              interactions, maintainable code and a willingness
+              to keep learning. The goal isn't simply to make
+              a page look good — it's to make the experience work.
+            </p>
+
+            <div class="about-signature">
+
+              <span>
+                Currently learning
+              </span>
+
+              <div class="learning-tags">
+                <span>React</span>
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>Tailwind</span>
+              </div>
+
+            </div>
+
+          </article>
+
+
+          <aside
+            class="timeline reveal reveal-delay"
+            aria-label="Learning timeline"
+          >
+
+            <div class="timeline-item">
+
+              <span class="timeline-dot"></span>
+
+              <small>
+                Foundation
+              </small>
+
+              <h3>
+                HTML & CSS
+              </h3>
+
+              <p>
+                Semantic structure, responsive layouts,
+                Flexbox, Grid and accessible UI.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <span class="timeline-dot"></span>
+
+              <small>
+                Building
+              </small>
+
+              <h3>
+                JavaScript
+              </h3>
+
+              <p>
+                DOM manipulation, forms, browser APIs
+                and interactive experiences.
+              </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+              <span class="timeline-dot"></span>
+
+              <small>
+                Next chapter
+              </small>
+
+              <h3>
+                React ecosystem
+              </h3>
+
+              <p>
+                Component thinking, modern tooling and
+                production-oriented frontend development.
+              </p>
+
+            </div>
+
+          </aside>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section
+      class="section projects-section"
+      id="projects"
+      aria-labelledby="projects-title"
+    >
+
+      <div class="container">
+
+        <div class="section-heading split-heading reveal">
+
+          <div>
+
+            <span class="section-number">
+              02 / Selected work
+            </span>
+
+            <h2 id="projects-title">
+              Things I've
+              <span class="gradient-text">
+                built.
+              </span>
+            </h2>
+
+          </div>
+
+          <p>
+            Real projects, practical interfaces and a
+            growing frontend toolkit.
+          </p>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div
+          class="filters reveal"
+          role="group"
+          aria-label="Filter projects"
         >
-          <label for="name">
-            Name
 
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              placeholder="Your name"
-              autocomplete="name"
-            >
-          </label>
-
-          <label for="email">
-            Email
-
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              placeholder="you@example.com"
-              autocomplete="email"
-            >
-          </label>
-
-          <label for="message">
-            Message
-
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              required
-              placeholder="Tell me about your idea"
-            ></textarea>
-          </label>
-
-          <button type="submit" class="btn">
-            Open Email App
+          <button
+            class="filter active"
+            type="button"
+            data-filter="all"
+          >
+            All
           </button>
 
-          <p
-            id="formStatus"
-            class="form-status"
-            aria-live="polite"
-          ></p>
+          <button
+            class="filter"
+            type="button"
+            data-filter="website"
+          >
+            Websites
+          </button>
 
-          <p class="form-helper">
-            Your email application will open with your message prepared for sending.
-          </p>
-        </form>
+          <button
+            class="filter"
+            type="button"
+            data-filter="tool"
+          >
+            Tools
+          </button>
+
+          <button
+            class="filter"
+            type="button"
+            data-filter="dashboard"
+          >
+            Dashboards
+          </button>
+
+        </div>
+
+
+        <!-- PROJECT GRID -->
+
+        <div
+          class="bento-grid"
+          id="projectGrid"
+        >
+
+          <!-- PROJECT 1 -->
+
+          <article
+            class="project-card project-featured glass tilt-card reveal"
+            data-category="website"
+            data-tilt
+          >
+
+            <div class="project-preview preview-mosque">
+
+              <div class="preview-browser">
+
+                <div class="preview-top">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="preview-content">
+
+                  <div class="preview-sidebar"></div>
+
+                  <div class="preview-lines">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                  </div>
+
+                  <div class="preview-stat"></div>
+
+                </div>
+
+              </div>
+
+              <span class="preview-label">
+                Responsive website
+              </span>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+                <span>01</span>
+                <span>2025</span>
+              </div>
+
+              <h3>
+                Central Mosque Website
+              </h3>
+
+              <p>
+                A responsive digital presence for Central
+                Mosque Ebutte-Igbogbo with prayer times and
+                event announcements.
+              </p>
+
+              <div class="tech-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://ridwanullahikorodu.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live project
+                <span>↗</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 2 -->
+
+          <article
+            class="project-card glass tilt-card reveal reveal-delay"
+            data-category="tool"
+            data-tilt
+          >
+
+            <div class="project-preview preview-keygen">
+
+              <div class="terminal">
+
+                <span class="terminal-line">
+                  $ generatePassword()
+                </span>
+
+                <strong>
+                  ••••••••••••••••
+                </strong>
+
+                <small>
+                  16 characters · secure · copied
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+                <span>02</span>
+                <span>Tool</span>
+              </div>
+
+              <h3>
+                Password Generator
+              </h3>
+
+              <p>
+                Custom password generation with copy
+                functionality and an accessible responsive interface.
+              </p>
+
+              <div class="tech-list">
+                <span>JavaScript</span>
+                <span>CSS</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://projectkeygen.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live project
+                <span>↗</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 3 -->
+
+          <article
+            class="project-card glass tilt-card reveal"
+            data-category="dashboard"
+            data-tilt
+          >
+
+            <div class="project-preview preview-analytics">
+
+              <div class="analytics-preview">
+
+                <div class="chart-bars">
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </div>
+
+                <div class="chart-card">
+                  <span></span>
+                  <b></b>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+                <span>03</span>
+                <span>Dashboard</span>
+              </div>
+
+              <h3>
+                Business Analytics Dashboard
+              </h3>
+
+              <p>
+                Metrics, charts, filters and tables organised
+                into a responsive business interface.
+              </p>
+
+              <div class="tech-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://business-analyticsdashboard.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live project
+                <span>↗</span>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- PROJECT 4 -->
+
+          <article
+            class="project-card project-wide glass tilt-card reveal reveal-delay"
+            data-category="website"
+            data-tilt
+          >
+
+            <div class="project-preview preview-planner">
+
+              <div class="planner-card">
+
+                <span>
+                  Today
+                </span>
+
+                <strong>
+                  Plan your salah & Quran time
+                </strong>
+
+                <div class="planner-progress">
+                  <i></i>
+                </div>
+
+                <small>
+                  Keep showing up, one day at a time.
+                </small>
+
+              </div>
+
+            </div>
+
+
+            <div class="project-info">
+
+              <div class="project-topline">
+                <span>04</span>
+                <span>Web app</span>
+              </div>
+
+              <h3>
+                Daily Quran & Prayer Dashboard
+              </h3>
+
+              <p>
+                A single-page dashboard concept for Islamic
+                reminders, prayer planning and Quran-related activities.
+              </p>
+
+              <div class="tech-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://salahquranplanner.netlify.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live project
+                <span>↗</span>
+              </a>
+
+            </div>
+
+          </article>
+
+        </div>
+
+
+        <!-- GITHUB CTA -->
+
+        <div class="github-cta glass reveal">
+
+          <div>
+
+            <span class="section-number">
+              Open source
+            </span>
+
+            <h3>
+              See more experiments & code on GitHub.
+            </h3>
+
+          </div>
+
+          <a
+            class="button button-ghost magnetic"
+            href="https://github.com/Jamal4dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub profile ↗
+          </a>
+
+        </div>
+
       </div>
+
     </section>
+
+
+    <!-- SKILLS -->
+
+    <section
+      class="section"
+      id="skills"
+      aria-labelledby="skills-title"
+    >
+
+      <div class="container">
+
+        <div class="section-heading reveal">
+
+          <span class="section-number">
+            03 / Toolkit
+          </span>
+
+          <h2 id="skills-title">
+            Tools I use to
+            <span class="gradient-text">
+              build.
+            </span>
+          </h2>
+
+        </div>
+
+
+        <div class="skills-layout">
+
+          <div class="skill-card glass reveal">
+
+            <div class="skill-head">
+              <span>01</span>
+              <h3>
+                Frontend fundamentals
+              </h3>
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>HTML5</span>
+                <b>90%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:90%"></i>
+              </span>
+
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>CSS3</span>
+                <b>84%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:84%"></i>
+              </span>
+
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>JavaScript</span>
+                <b>70%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:70%"></i>
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="skill-card glass reveal reveal-delay">
+
+            <div class="skill-head">
+              <span>02</span>
+              <h3>
+                Modern frontend
+              </h3>
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>React</span>
+                <b>45%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:45%"></i>
+              </span>
+
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>Next.js</span>
+                <b>40%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:40%"></i>
+              </span>
+
+            </div>
+
+            <div class="skill-row">
+
+              <div>
+                <span>Tailwind CSS</span>
+                <b>40%</b>
+              </div>
+
+              <span class="skill-track">
+                <i style="--skill:40%"></i>
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="tech-cloud glass reveal">
+
+            <span>Git</span>
+            <span>GitHub</span>
+            <span>Vite</span>
+            <span>npm</span>
+            <span>VS Code</span>
+            <span>Postman</span>
+            <span>Chrome DevTools</span>
+            <span>Responsive Design</span>
+            <span>Accessibility</span>
+            <span>Component Architecture</span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section
+      class="section contact-section"
+      id="contact"
+      aria-labelledby="contact-title"
+    >
+
+      <div class="container">
+
+        <div class="contact-card glass reveal">
+
+          <div class="contact-copy">
+
+            <span class="section-number">
+              04 / Contact
+            </span>
+
+            <h2 id="contact-title">
+              Have an idea?
+              <br>
+              <span class="gradient-text">
+                Let's make it real.
+              </span>
+            </h2>
+
+            <p>
+              I'm open to junior frontend roles, freelance
+              projects and opportunities to grow with a strong team.
+            </p>
+
+
+            <div class="contact-links">
+
+              <a href="mailto:addysam@yahoo.com">
+                <span>✉</span>
+                addysam@yahoo.com
+              </a>
+
+              <a
+                href="https://github.com/Jamal4dev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>⌘</span>
+                github.com/Jamal4dev
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/ayomide-adeniyi-91746130a"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>in</span>
+                LinkedIn
+              </a>
+
+            </div>
+
+          </div>
+
+
+          <form
+            class="contact-form"
+            id="contactForm"
+            novalidate
+          >
+
+            <div class="field-row">
+
+              <label>
+
+                <span>Name</span>
+
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  placeholder="Your name"
+                  required
+                  minlength="2"
+                >
+
+                <small
+                  class="field-error"
+                  data-error-for="name"
+                ></small>
+
+              </label>
+
+
+              <label>
+
+                <span>Email</span>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  placeholder="you@example.com"
+                  required
+                >
+
+                <small
+                  class="field-error"
+                  data-error-for="email"
+                ></small>
+
+              </label>
+
+            </div>
+
+
+            <label>
+
+              <span>Message</span>
+
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                placeholder="Tell me a little about the project..."
+                required
+                minlength="10"
+              ></textarea>
+
+              <small
+                class="field-error"
+                data-error-for="message"
+              ></small>
+
+            </label>
+
+
+            <button
+              class="button button-primary submit-button magnetic"
+              type="submit"
+            >
+              <span>Prepare email</span>
+              <span>↗</span>
+            </button>
+
+            <p class="form-note">
+              Submitting opens your email app with the message prepared.
+              No data is stored on this site.
+            </p>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </section>
+
   </main>
 
-  <footer>
-    <p>
-      © <span id="currentYear">2026</span> Adeniyi Ayomide.
-      Built with HTML, CSS, and JavaScript.
-    </p>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="footer">
+
+    <div class="container footer-inner">
+
+      <span>
+        © <span id="year"></span>
+        Adeniyi Ayomide
+      </span>
+
+      <span>
+        Designed & built with HTML, CSS & JavaScript.
+      </span>
+
+      <a href="#top">
+        Back to top ↑
+      </a>
+
+    </div>
+
   </footer>
 
-  <script src="script.js"></script>
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+
+  <script defer src="script.js"></script>
+
 </body>
 </html>
