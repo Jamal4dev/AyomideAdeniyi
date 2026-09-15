@@ -1856,6 +1856,121 @@ img {
     );
 }
 
+.media-architecture {
+  background:
+    radial-gradient(
+      circle at 75% 22%,
+      rgba(78, 231, 194, 0.16),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #111a20,
+      #111225
+    );
+}
+
+.architecture-ui {
+  width: min(78%, 520px);
+
+  display: grid;
+
+  justify-items: center;
+
+  gap: 10px;
+
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.1);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 22px 60px
+    rgba(0, 0, 0, 0.3);
+
+  transform:
+    perspective(900px)
+    rotateX(4deg)
+    rotateY(-5deg);
+
+  animation:
+    previewFloat
+    6s
+    ease-in-out
+    infinite;
+}
+
+.architecture-node {
+  width: 100%;
+
+  display: grid;
+
+  gap: 3px;
+
+  padding: 11px 13px;
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--accent-2) 25%,
+      var(--line)
+    );
+
+  border-radius: 12px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent-2) 7%,
+      transparent
+    );
+}
+
+.architecture-node small,
+.architecture-label {
+  color: var(--muted-2);
+
+  font-size: 0.6rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.1em;
+}
+
+.architecture-node strong {
+  color: var(--text);
+
+  font-size: 0.82rem;
+}
+
+.architecture-ui > i {
+  width: 1px;
+  height: 16px;
+
+  background:
+    linear-gradient(
+      var(--accent-2),
+      var(--accent)
+    );
+}
+
+.architecture-label {
+  color: var(--accent-2);
+
+  margin-top: 3px;
+}
+
 .planner-ui {
   width: 70%;
 

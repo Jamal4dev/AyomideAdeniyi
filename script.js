@@ -329,10 +329,12 @@
 
           projects.forEach(
             (card) => {
+              const categories =
+                (card.dataset.category || "").split(" ");
+
               const shouldHide =
                 filter !== "all" &&
-                card.dataset.category !==
-                  filter;
+                !categories.includes(filter);
 
               card.classList.toggle(
                 "is-hidden",
